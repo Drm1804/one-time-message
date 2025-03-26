@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "dotenv": "^16.4.7",
-    "firebase": "^10.5.2",
+    "firebase": "^11.5.0",
     "grammy": "^1.29.0",
     "log4js": "^6.9.1",
     "tslib": "~2.6.2"
