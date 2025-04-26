@@ -1,7 +1,7 @@
 import { Api, RawApi } from 'grammy';
 import { getMessage, removeMessage } from '../../utils/database.js';
-import { logger } from '../../utils/logger.js';
 import { MessageStructure } from './types.js';
+import { logger } from '../../utils/logger.js';
 
 const log = logger('Reader Service');
 

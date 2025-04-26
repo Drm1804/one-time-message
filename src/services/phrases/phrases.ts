@@ -1,6 +1,6 @@
 import { LanguageCode } from 'grammy/types';
-import { ru_store } from './ru_store.js';
 import { LangStore, PhKeys } from './types.js';
+import { ru_store } from './ru_store.js'; // Ensure this path is correct
 
 const supportedLanguages = {
   en: ru_store,
@@ -22,3 +22,7 @@ export function getText(
   }
   return _store[key];
 }
+
+export const phrases: LangStore = {
+  updateTlgProgress: 'Updating Telegram progress...',
+};

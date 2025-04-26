@@ -1,1 +1,1 @@
-export { getText } from './phrases.js';
+export { LangStore } from './types.js';

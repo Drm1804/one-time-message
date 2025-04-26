@@ -18,7 +18,12 @@
     "noImplicitAny": false,
     "noImplicitThis": false,
     "skipLibCheck": true,
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "types": ["node"],
+      "baseUrl": "./build/src/",  
+      "paths": {  
+          "*": ["*", "* .js"]  
+      }  
   },
   "include": ["src/**/*", "__tests__/**/*", "./config_template.ts", "./config.ts", "./config.type.ts"]
 }
