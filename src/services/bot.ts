@@ -1,11 +1,9 @@
 import { Bot, Context, session } from 'grammy';
 import { logger } from '../utils/logger.js';
-import {
-  removeBotMessageFromChat,
-  viewMessage,
-} from '../components/viewer/index.js';
+import { viewMessage } from '../components/viewer/index.js';
 import { getText } from './phrases/phrases.js';
 import { LanguageCode } from 'grammy/types';
+import { sender } from '../components/sender/sender.js';
 
 const ADMIN_IDS = [];
 const log = logger('Bot Service');
@@ -53,14 +51,23 @@ export async function initBot(
     const [command, ...args] = ctx.update.message.text.split(' ');
     if (args.length > 0) {
       log.info(`start command ${command} with args ${args}`);
-      await viewMessage(args[0], ctx.api, ctx.message.chat.id);
+      await viewMessage(
+        args[0],
+        ctx.api,
+        ctx.message.chat.id,
+        ctx.me.language_code,
+      );
     } else {
       log.info(`start command ${command} without args`);
       await ctx.api.sendMessage(
         ctx.update.message.chat.id,
-        getText(ctx.me.language_code as LanguageCode, 'welcome_message'),
+        getText('welcome_message', ctx.me.language_code as LanguageCode),
       );
     }
+  });
+
+  bot.on(':text', async (ctx: BotContext) => {
+    await sender(ctx);
   });
 
   bot.catch((error) => {

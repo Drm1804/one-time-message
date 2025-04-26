@@ -12,8 +12,8 @@ const getStore = (lang: LanguageCode): LangStore => {
 };
 
 export function getText(
-  lang: LanguageCode,
   key: PhKeys,
+  lang: LanguageCode = 'en',
   args: Array<string | number> = [],
 ): string {
   const _store = getStore(lang);

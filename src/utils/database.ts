@@ -18,6 +18,7 @@ export const PATH = {
 };
 
 import { FirebaseOptions } from 'firebase/app';
+import { MessageStructure } from '../components/viewer/types.js';
 
 export async function initDatabase(
   firebase: FirebaseOptions,
@@ -49,4 +50,13 @@ export async function getMessage<M>(id: string): Promise<M | null> {
 export async function removeMessage(id: string): Promise<void> {
   log.info('readMessage');
   remove(ref(db, PATH.messages + id));
+}
+
+export async function setMessage(id: string, message: string): Promise<void> {
+  const data: MessageStructure = {
+    text: message,
+    id,
+  };
+  log.info('setMessage');
+  set(ref(db, PATH.messages + id), data);
 }
