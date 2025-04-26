@@ -4,6 +4,8 @@ import {
   removeBotMessageFromChat,
   viewMessage,
 } from '../components/viewer/index.js';
+import { getText } from './phrases/phrases.js';
+import { LanguageCode } from 'grammy/types';
 
 const ADMIN_IDS = [];
 const log = logger('Bot Service');
@@ -54,7 +56,10 @@ export async function initBot(
       await viewMessage(args[0], ctx.api, ctx.message.chat.id);
     } else {
       log.info(`start command ${command} without args`);
-      await ctx.api.sendMessage(ctx.update.message.chat.id, 'Hello');
+      await ctx.api.sendMessage(
+        ctx.update.message.chat.id,
+        getText(ctx.me.language_code as LanguageCode, 'welcome_message'),
+      );
     }
   });
 

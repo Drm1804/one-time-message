@@ -22,7 +22,3 @@ export function getText(
   }
   return _store[key];
 }
-
-export const phrases: LangStore = {
-  updateTlgProgress: 'Updating Telegram progress...',
-};
