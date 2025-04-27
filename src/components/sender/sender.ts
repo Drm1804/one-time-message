@@ -1,9 +1,9 @@
-import { LanguageCode } from 'grammy/types';
-import { BotContext } from '../../services/bot.js';
+import { BotContext } from '../../services/bot/bot.js';
 import { getText } from '../../services/phrases/phrases.js';
 import { setMessage } from '../../utils/database.js';
 import { remover, sendWithRemover } from '../remover/remove.js';
 import { customAlphabet } from 'nanoid';
+import { lang } from '../../utils/utils.js';
 
 export const sender = async (ctx: BotContext): Promise<void> => {
   const chatId = ctx.chat.id;
@@ -15,10 +15,7 @@ export const sender = async (ctx: BotContext): Promise<void> => {
    * Проверяем где с ботом общаются
    */
   if (chatId > 0) {
-    const mes = getText(
-      'not_chat_warning',
-      ctx.me.language_code as LanguageCode,
-    );
+    const mes = getText('not_chat_warning', lang(ctx));
     sendWithRemover({ ctx, mes, chatId });
   }
 
@@ -28,10 +25,7 @@ export const sender = async (ctx: BotContext): Promise<void> => {
       ctx.api.sendMessage(chatId, '').then(({ message_id }) => {
         remover(chatId, message_id);
       });
-      const mes = getText(
-        'participants_count_error',
-        ctx.me.language_code as LanguageCode,
-      );
+      const mes = getText('participants_count_error', lang(ctx));
       sendWithRemover({ ctx, mes, chatId });
       return;
     }

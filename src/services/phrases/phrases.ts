@@ -1,9 +1,12 @@
 import { LanguageCode } from 'grammy/types';
 import { LangStore, PhKeys } from './types.js';
 import { ru_store } from './ru_store.js'; // Ensure this path is correct
+import { en_store } from './en_store.js';
+import { es_store } from './es_store.js';
 
 const supportedLanguages = {
-  en: ru_store,
+  en: en_store,
+  es: es_store,
   ru: ru_store,
 };
 const getStore = (lang: LanguageCode): LangStore => {
