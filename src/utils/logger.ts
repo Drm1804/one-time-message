@@ -1,26 +1,20 @@
 import log4js from 'log4js';
 
-const _logger = log4js.configure({
+log4js.configure({
   appenders: {
-    file: {
-      type: 'file',
-      filename: 'app.log',
-      maxLogSize: 10 * 1024 * 1024,
-      backups: 5, // keep five backup files
-      compress: true, // compress the backups
-      encoding: 'utf-8',
-      mode: 0o0640,
-      flags: 'w+',
-    },
-    out: {
-      type: 'stdout',
-    },
+    out: { type: 'console' },
   },
   categories: {
-    default: { appenders: ['file', 'out'], level: 'trace' },
+    default: { appenders: ['out'], level: 'info' },
   },
 });
 
-export function logger(id: string) {
-  return _logger.getLogger(id);
-}
+export const logger = (
+  name: string,
+): { info: (message: string) => void; error: (message: string) => void } => {
+  const logInstance = log4js.getLogger(name);
+  return {
+    info: (message: string): void => logInstance.info(message),
+    error: (message: string): void => logInstance.error(message),
+  };
+};

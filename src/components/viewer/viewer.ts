@@ -28,6 +28,9 @@ async function getOneTimeMessageText(
 ): Promise<string> {
   try {
     const message = await getMessage<MessageStructure>(id);
+    if (!message) {
+      throw new Error('Message is null or undefined');
+    }
     return message.text;
   } catch (error) {
     return getText('message_not_found', lang as LanguageCode);

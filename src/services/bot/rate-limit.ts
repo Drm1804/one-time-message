@@ -1,8 +1,8 @@
 import { NextFunction } from 'grammy';
-import { BotContext } from './bot.js';
-import { getText } from '../phrases/phrases.js';
-import { lang } from '../../utils/utils.js';
-import { remover, sendWithRemover } from '../../components/remover/remove.js';
+import { BotContext } from './bot';
+import { getText } from '../phrases/phrases';
+import { lang } from '../../utils/utils';
+import { remover, sendWithRemover } from '../../components/remover/remove';
 const RATE_LIMIT_TIME = 10000; // 10 seconds
 
 export const rateLimit = new Map<number, number>();
@@ -16,10 +16,13 @@ export async function rateLimitHandler(
     return await next();
   }
 
-  const isStartCommand = ctx.message.text.startsWith('/start');
-
-  if (isStartCommand) {
+  const isStartCommand = ctx.message?.text?.startsWith('/start');
+  if (!isStartCommand) {
     return await next();
+  }
+
+  if (!ctx.message?.chat?.id || !ctx.message?.message_id) {
+    throw new Error('Invalid context: missing chat or message details');
   }
 
   const now = Date.now();

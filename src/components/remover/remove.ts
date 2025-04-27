@@ -1,5 +1,5 @@
-import { BotContext, getBot } from '../../services/bot/bot.js';
-import { logger } from '../../utils/logger.js';
+import { BotContext, getBot } from '../../services/bot/bot';
+import { logger } from '../../utils/logger';
 
 const log = logger('Remover ');
 

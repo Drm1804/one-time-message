@@ -1,10 +1,11 @@
 import { Bot, Context, session } from 'grammy';
-import { logger } from '../../utils/logger.js';
-import { viewMessage } from '../../components/viewer/index.js';
-import { getText } from '../phrases/phrases.js';
-import { sender } from '../../components/sender/sender.js';
-import { rateLimitHandler } from './rate-limit.js';
-import { lang } from '../../utils/utils.js';
+import { SessionFlavor } from 'grammy';
+import { logger } from '../../utils/logger';
+import { viewMessage } from '../../components/viewer/index';
+import { getText } from '../phrases/phrases';
+import { sender } from '../../components/sender/sender';
+import { rateLimitHandler } from './rate-limit';
+import { lang } from '../../utils/utils';
 
 const ADMIN_IDS = [];
 const log = logger('Bot Service');
@@ -13,7 +14,7 @@ export type SessionData = {
   db: Record<string, unknown>;
 };
 
-export type BotContext = Context;
+export type BotContext = Context & SessionFlavor<{ db: Record<string, unknown> }>;
 
 let bot: Bot<BotContext>;
 
@@ -51,7 +52,10 @@ export async function initBot(
   //Install menus
 
   bot.command('start', async (ctx) => {
-    const [command, ...args] = ctx.update.message.text.split(' ');
+    const [command, ...args] = ctx.update.message?.text?.split(' ') || [];
+    if (!ctx.message?.chat?.id) {
+      throw new Error('Invalid context: missing chat ID');
+    }
     if (args.length > 0) {
       log.info(`start command ${command} with args ${args}`);
       await viewMessage(
@@ -74,7 +78,7 @@ export async function initBot(
   });
 
   bot.catch((error) => {
-    console.log('bot error', error);
+    log.error('bot error');
   });
 
   /**
@@ -87,12 +91,12 @@ export async function initBot(
   });
 
   bot.catch((error) => {
-    log.error('bot error', error);
+    log.error('bot error');
   });
 
   bot.start({
     onStart(botInfo) {
-      log.info('Bot starts as', botInfo.username);
+      log.info(`Bot starts as ${botInfo.username}`);
     },
   });
 

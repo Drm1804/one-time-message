@@ -8,7 +8,7 @@ import {
   set,
 } from 'firebase/database';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { logger } from './logger.js';
+import { logger } from './logger';
 
 let db: Database;
 const log = logger('DB');
@@ -30,7 +30,7 @@ export async function initDatabase(
     await signInWithEmailAndPassword(getAuth(), email, password);
     db = getDatabase(app);
   } catch (err) {
-    log.error(err);
+    log.error(String(err));
   }
 
   return db;

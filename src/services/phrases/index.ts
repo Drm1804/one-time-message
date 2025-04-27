@@ -1,1 +1,1 @@
-export { LangStore } from './types.js';
+export { LangStore } from './types';
