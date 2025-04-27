@@ -1,9 +1,10 @@
 import { Bot, Context, session } from 'grammy';
-import { logger } from '../utils/logger.js';
-import { viewMessage } from '../components/viewer/index.js';
-import { getText } from './phrases/phrases.js';
-import { LanguageCode } from 'grammy/types';
-import { sender } from '../components/sender/sender.js';
+import { logger } from '../../utils/logger.js';
+import { viewMessage } from '../../components/viewer/index.js';
+import { getText } from '../phrases/phrases.js';
+import { sender } from '../../components/sender/sender.js';
+import { rateLimitHandler } from './rate-limit.js';
+import { lang } from '../../utils/utils.js';
 
 const ADMIN_IDS = [];
 const log = logger('Bot Service');
@@ -43,6 +44,8 @@ export async function initBot(
 
   // bot.use(isAdmin);
 
+  bot.use(rateLimitHandler);
+
   // Install the conversations plugin.
 
   //Install menus
@@ -61,7 +64,7 @@ export async function initBot(
       log.info(`start command ${command} without args`);
       await ctx.api.sendMessage(
         ctx.update.message.chat.id,
-        getText('welcome_message', ctx.me.language_code as LanguageCode),
+        getText('welcome_message', lang(ctx)),
       );
     }
   });

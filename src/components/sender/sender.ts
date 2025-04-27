@@ -2,7 +2,7 @@ import { LanguageCode } from 'grammy/types';
 import { BotContext } from '../../services/bot.js';
 import { getText } from '../../services/phrases/phrases.js';
 import { setMessage } from '../../utils/database.js';
-import { remover } from '../remover/remove.js';
+import { remover, sendWithRemover } from '../remover/remove.js';
 import { customAlphabet } from 'nanoid';
 
 export const sender = async (ctx: BotContext): Promise<void> => {
@@ -52,19 +52,5 @@ export const sender = async (ctx: BotContext): Promise<void> => {
   });
 };
 
-type SendWithRemover = {
-  ctx: BotContext;
-  mes: string;
-  chatId: number;
-  timeout?: number;
-};
-
 const getOtLink = (botUsername: string, otmId: string): string =>
   `https://t.me/${botUsername}?start=${otmId}`;
-
-const sendWithRemover = (params: SendWithRemover): void => {
-  const { ctx, mes, chatId, timeout } = params;
-  ctx.api.sendMessage(chatId, mes).then(({ message_id }) => {
-    remover(chatId, message_id, timeout);
-  });
-};

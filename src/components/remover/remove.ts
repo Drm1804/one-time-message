@@ -1,9 +1,9 @@
-import { getBot } from '../../services/bot.js';
+import { BotContext, getBot } from '../../services/bot/bot.js';
 import { logger } from '../../utils/logger.js';
 
 const log = logger('Remover ');
 
-const MESSAGE_TIMEOUT = 1000 * 1 * 5; // 5 minutes
+const MESSAGE_TIMEOUT = 1000 * 60 * 5; // 5 minutes
 
 export const remover = async (
   chatId: number,
@@ -26,4 +26,18 @@ export const remover = async (
       );
     }
   }, timeout);
+};
+
+type SendWithRemover = {
+  ctx: BotContext;
+  mes: string;
+  chatId: number;
+  timeout?: number;
+};
+
+export const sendWithRemover = (params: SendWithRemover): void => {
+  const { ctx, mes, chatId, timeout } = params;
+  ctx.api.sendMessage(chatId, mes).then(({ message_id }) => {
+    remover(chatId, message_id, timeout);
+  });
 };
