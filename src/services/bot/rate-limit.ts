@@ -1,8 +1,8 @@
 import { NextFunction } from 'grammy';
-import { BotContext } from './bot';
-import { getText } from '../phrases/phrases';
-import { lang } from '../../utils/utils';
-import { remover, sendWithRemover } from '../../components/remover/remove';
+import { BotContext } from './bot.js';
+import { lang } from '../../utils/utils.js';
+import { remover, sendWithRemover } from '../../components/remover/remove.js';
+import { getText } from '../phrases/phrases.js';
 const RATE_LIMIT_TIME = 10000; // 10 seconds
 
 export const rateLimit = new Map<number, number>();

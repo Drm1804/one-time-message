@@ -13,3 +13,4 @@ COPY config.type.ts /bot
 COPY /src /bot/src
 RUN mkdir files
 RUN npm run build
+CMD ["node", "build/src/main.js"]

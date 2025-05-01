@@ -1,9 +1,8 @@
-import { sender } from './sender';
-import { getText } from '../../services/phrases/phrases';
-import { setMessage } from '../../utils/database';
-import { remover, sendWithRemover } from '../remover/remove';
-import { customAlphabet } from 'nanoid';
-import { lang } from '../../utils/utils';
+import { sender } from './sender.js';
+import { getText } from '../../services/phrases/phrases.js';
+import { setMessage } from '../../utils/database.js';
+import { remover, sendWithRemover } from '../remover/remove.js';
+import { lang } from '../../utils/utils.js';
 
 jest.mock('../../services/phrases/phrases', () => ({
   getText: jest.fn(),

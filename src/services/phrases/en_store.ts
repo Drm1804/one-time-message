@@ -1,4 +1,4 @@
-import { LangStore } from './types';
+import { LangStore } from './types.js';
 
 const welcome_message = `
 One-time message bot!

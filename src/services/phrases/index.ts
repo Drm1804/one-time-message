@@ -1,1 +1,0 @@
-export { LangStore } from './types';

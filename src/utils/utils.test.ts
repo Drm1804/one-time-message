@@ -1,4 +1,4 @@
-import { pause, lang, someUtilityFunction } from './utils';
+import { pause, lang, someUtilityFunction } from './utils.js';
 import { BotContext } from '../services/bot/bot.js';
 
 describe('pause', () => {

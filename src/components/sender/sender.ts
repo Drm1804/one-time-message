@@ -1,9 +1,9 @@
-import { BotContext } from '../../services/bot/bot';
-import { getText } from '../../services/phrases/phrases';
-import { setMessage } from '../../utils/database';
-import { remover, sendWithRemover } from '../remover/remove';
+import { BotContext } from '../../services/bot/bot.js';
+import { getText } from '../../services/phrases/phrases.js';
+import { setMessage } from '../../utils/database.js';
+import { remover, sendWithRemover } from '../remover/remove.js';
 import { customAlphabet } from 'nanoid';
-import { lang } from '../../utils/utils';
+import { lang } from '../../utils/utils.js';
 
 export const sender = async (ctx: BotContext): Promise<void> => {
   const chatId = ctx.chat?.id;

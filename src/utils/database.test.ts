@@ -1,5 +1,11 @@
-import { initDatabase, getDb, getMessage, removeMessage, setMessage } from './database';
-import { PATH } from './database';
+import {
+  initDatabase,
+  getDb,
+  getMessage,
+  removeMessage,
+  setMessage,
+} from './database.js';
+import { PATH } from './database.js';
 import { jest } from '@jest/globals';
 import { ref, remove, set } from 'firebase/database';
 

@@ -1,5 +1,5 @@
-import { conf } from '../config';
-import { logger } from './utils/logger';
+import { conf } from '../config.js';
+import { logger } from './utils/logger.js';
 import { initBot } from './services/bot/bot.js';
 import { initDatabase } from './utils/database.js';
 

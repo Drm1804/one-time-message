@@ -1,20 +1,21 @@
 import { Bot, Context, session } from 'grammy';
 import { SessionFlavor } from 'grammy';
-import { logger } from '../../utils/logger';
-import { viewMessage } from '../../components/viewer/index';
-import { getText } from '../phrases/phrases';
-import { sender } from '../../components/sender/sender';
-import { rateLimitHandler } from './rate-limit';
-import { lang } from '../../utils/utils';
+import { logger } from '../../utils/logger.js';
+import { viewMessage } from '../../components/viewer/index.js';
+import { getText } from '../phrases/phrases.js';
+import { sender } from '../../components/sender/sender.js';
+import { rateLimitHandler } from './rate-limit.js';
+import { lang } from '../../utils/utils.js';
 
-const ADMIN_IDS = [];
+// const ADMIN_IDS = [];
 const log = logger('Bot Service');
 
 export type SessionData = {
   db: Record<string, unknown>;
 };
 
-export type BotContext = Context & SessionFlavor<{ db: Record<string, unknown> }>;
+export type BotContext = Context &
+  SessionFlavor<{ db: Record<string, unknown> }>;
 
 let bot: Bot<BotContext>;
 
@@ -77,7 +78,7 @@ export async function initBot(
     await sender(ctx);
   });
 
-  bot.catch((error) => {
+  bot.catch(() => {
     log.error('bot error');
   });
 
@@ -90,7 +91,7 @@ export async function initBot(
     await ctx.answerCallbackQuery(); // remove loading animation
   });
 
-  bot.catch((error) => {
+  bot.catch(() => {
     log.error('bot error');
   });
 

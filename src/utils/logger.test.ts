@@ -11,7 +11,7 @@ jest.mock('log4js', () => {
   };
 });
 
-import { logger } from './logger';
+import { logger } from './logger.js';
 
 describe('logger', () => {
   it('should log info messages correctly', () => {

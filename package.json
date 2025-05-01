@@ -1,5 +1,5 @@
 {
-  "name": "telegram-boilerplate",
+  "name": "one-time-message-tg",
   "version": "0.0.4",
   "description": "Minimalistic boilerplate to quick-start Node.js development in TypeScript.",
   "type": "module",
@@ -35,13 +35,10 @@
   },
   "dependencies": {
     "dotenv": "^16.4.7",
-    "firebase": "^11.5.0",
-    "grammy": "^1.29.0",
+    "firebase": "^11.6.1",
+    "grammy": "^1.36.1",
     "log4js": "^6.9.1",
     "nanoid": "^5.1.5",
     "tslib": "~2.6.2"
-  },
-  "volta": {
-    "node": "16.13.0"
   }
 }

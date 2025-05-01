@@ -8,7 +8,7 @@ import {
   set,
 } from 'firebase/database';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { logger } from './logger';
+import { logger } from './logger.js';
 
 let db: Database;
 const log = logger('DB');
