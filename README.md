@@ -1,24 +1,32 @@
-# Telegram_typescript_boilerplate
+# One Time Message Bot
 
-Заготовка для быстрой разработки ботов для Telegram
+A bot designed for sending messages that can only be read once. After being read, the message is automatically deleted. If the recipient cannot access the message, it means someone else has already read it.
 
-## Основная идея
+## Features
 
-Получить иснтрумент для быстрого протитпирования ботов. В сборке:
+- **Privacy-Focused**: Messages are deleted after being read, ensuring they cannot be recovered.
+- **Secure Storage**: Unread messages are stored in a modified format to enhance security in case of data leaks.
+- **Media Support**: Send media files using Telegram's built-in functions.
+- **Anonymity**: The bot respects your right to anonymity.
 
-- telegraf.js
-- firebase
-- log4js
+## How to Use
 
-## Секреты
+1. Add the bot to a group where you want to send messages.
+2. (Optional) Make the bot an administrator with permission to delete messages in the group for automatic cleanup.
+3. Send any text message to the bot.
+4. The bot will return a link, which you can share with the recipient. Once the recipient reads the message, it will be deleted.
 
-Секреты хранятся в файле .env. Для разработки можно использовать файл .env. 
+## Limitations
 
-## Поддержка и развитие
+- Messages sent in private chats cannot be deleted by the bot.
+- The bot does not function in groups with more than two participants.
+- Sending sensitive data is at your own risk. For added security, consider splitting sensitive information into multiple messages.
 
-Если у тебя есть идеи для развития проекта, создавай форк этого репозитори, после чего предлагай в качестве ПР.
+## Support and Development
 
-Так же ты можешь подписаться на мои социальные сети:
+If you have ideas for improving the project, feel free to fork the repository and submit a pull request.
 
-- [yuotube](https://www.youtube.com/channel/UCmGxW0J_DDS3QzPktir5TKw)
-- [telegram](https://t.me/alx_four)
+Follow me on social media for updates:
+
+- [YouTube](https://www.youtube.com/channel/UCmGxW0J_DDS3QzPktir5TKw)
+- [Telegram](https://t.me/alx_four)
