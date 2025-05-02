@@ -9,6 +9,7 @@ const config = {
     project: "tsconfig.json",
     sourceType: "module",
     ecmaVersion: 2020,
+    extraFileExtensions: [".cjs"],
   },
   plugins: ["@typescript-eslint", "jest"],
   extends: [
