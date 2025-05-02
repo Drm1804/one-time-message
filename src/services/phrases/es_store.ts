@@ -3,19 +3,19 @@ import { LangStore } from './types.js';
 const welcome_message = `
 ¡Bot de mensajes de una sola vez!
 
-🔐 Este bot permite que el destinatario lea el mensaje solo una vez. Después de leerlo, el mensaje será eliminado. Si el destinatario de tu mensaje no pudo recibirlo, significa que alguien más lo leyó. 🕵️‍♂️
+🔐 Está diseñado para que el destinatario pueda leer el mensaje solo una vez. Después de leerlo, el mensaje se eliminará. Si el destinatario de tu mensaje no pudo recibirlo, significa que alguien más lo leyó. 🕵️‍♂️
 
 📩 ¿Cómo enviar un mensaje?
 
-1️⃣ Agrega el bot al grupo donde enviarás mensajes. 📢 Haz que el bot sea administrador con el derecho de eliminar mensajes en este grupo. (Esto es opcional, pero al comunicarse con el bot en el grupo, puede eliminar el mensaje original por sí mismo) 🧹 
-2️⃣ Envía al bot el comando /send para enviar un mensaje. ✉️
-3️⃣ El bot responderá con un mensaje que contiene el botón "Enviar mensaje". Haz clic en el botón para enviar el mensaje. 🖱️
-4️⃣ El bot devolverá un enlace 🔗 que necesitas enviar al destinatario de tu mensaje. Después de que el destinatario lea el mensaje, será eliminado. ✨
+1️⃣ Agrega el bot al grupo donde enviarás mensajes. 📢 Haz que el bot sea administrador con permiso para eliminar mensajes en ese grupo. (Esto no es obligatorio, pero al interactuar con el bot en el grupo, puede eliminar automáticamente el mensaje original) 🧹
+2️⃣ Envía cualquier mensaje de texto al bot 🖱️
+4️⃣ El bot te devolverá un enlace 🔗, que debes enviar al destinatario de tu mensaje. Una vez que el destinatario lea el mensaje, este será eliminado. ✨
 
-🔒 No almacenamos tus mensajes después de que se lean, por lo que es imposible recuperarlos. 📪 Los mensajes no leídos se almacenan en una forma alterada, lo que dificulta su lectura en caso de una filtración de datos. 🚫 No almacenamos tus mensajes después de que se lean, por lo que es imposible recuperarlos. Los mensajes no leídos se almacenan en una forma alterada, lo que dificulta su lectura en caso de una filtración de datos, pero enviar datos sensibles es bajo tu propio riesgo. ⚠️ Podría valer la pena dividir la información sensible en varios mensajes. 📜
+Puedes enviar archivos multimedia utilizando las funciones integradas de Telegram. 📸
+
+🔒 No almacenamos tus mensajes después de que se leen, por lo que no es posible recuperarlos. 📪 Los mensajes no leídos se almacenan en un formato modificado, lo que dificulta su lectura en caso de una filtración de datos. 🚫 No almacenamos tus mensajes después de que se leen, por lo que no es posible recuperarlos. Los mensajes no leídos se almacenan en un formato modificado, lo que dificulta su lectura en caso de una filtración de datos, pero el envío de datos sensibles se realiza bajo tu propio riesgo. ⚠️ Tal vez sea mejor dividir la información sensible en varios mensajes. 📜
 
 ¡Tienes derecho al anonimato!
-
 `;
 
 export const es_store: LangStore = {
@@ -32,5 +32,5 @@ export const es_store: LangStore = {
   otm_link_message: (link) =>
     `🔗 Enlace al mensaje de una sola vez \\(haz clic para copiar\\): \n\n \`\`\` ${link} \`\`\``,
   otm_message: (message, timeout) =>
-    `Enviaste un mensaje\\. Se eliminará automáticamente en ${timeout} minutos: \n\n \`\`\` ${message} \`\`\``,
+    `Enviaste un mensaje. Se eliminará automáticamente en ${timeout} minutos: \n\n \`\`\` ${message} \`\`\``,
 };

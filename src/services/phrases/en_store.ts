@@ -1,21 +1,21 @@
 import { LangStore } from './types.js';
 
 const welcome_message = `
-One-time message bot!
+One-Time Message Bot!
 
-🔐 This bot allows the recipient to read the message only once. After reading, the message will be deleted. If the recipient of your message could not receive it, it means someone else read it. 🕵️‍♂️
+🔐 Designed so that the recipient can read the message only once. After reading, the message will be deleted. If the recipient of your message could not receive it, it means someone else read it. 🕵️‍♂️
 
 📩 How to send a message?
 
-1️⃣ Add the bot to the group where you will send messages. 📢 Make the bot an administrator with the right to delete messages in this group. (This is optional, but when communicating with the bot in the group, it can delete the original message itself) 🧹 
-2️⃣ Send the bot the /send command to send a message. ✉️
-3️⃣ The bot will reply with a message containing the "Send Message" button. Click the button to send the message. 🖱️
-4️⃣ The bot will return a link 🔗 that you need to send to the recipient of your message. After the recipient reads the message, it will be deleted. ✨
+1️⃣ Add the bot to the group where you will send messages. 📢 Make the bot an administrator with permission to delete messages in that group. (This is not mandatory, but when interacting with the bot in the group, it can automatically delete the original message) 🧹
+2️⃣ Send any text message to the bot 🖱️
+4️⃣ The bot will return a link 🔗, which you need to send to the recipient of your message. Once the recipient reads the message, it will be deleted. ✨
 
-🔒 We do not store your messages after they are read, so it is impossible to recover them. 📪 Unread messages are stored in an altered form, making it harder to read in case of a data leak. 🚫 We do not store your messages after they are read, so it is impossible to recover them. Unread messages are stored in an altered form, making it harder to read in case of a data leak, but sending sensitive data is at your own risk. ⚠️ It might be worth splitting sensitive information into several messages. 📜
+You can send media files using Telegram's built-in functions. 📸
+
+🔒 We do not store your messages after they are read, so it is impossible to recover them. 📪 Unread messages are stored in a modified format, making them harder to read in case of a data leak. 🚫 We do not store your messages after they are read, so it is impossible to recover them. Unread messages are stored in a modified format, making them harder to read in case of a data leak, but sending sensitive data is done at your own risk. ⚠️ It might be better to split sensitive information into several messages. 📜
 
 You have the right to anonymity!
-
 `;
 
 export const en_store: LangStore = {
