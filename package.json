@@ -1,6 +1,6 @@
 {
   "name": "one-time-message-tg",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Minimalistic boilerplate to quick-start Node.js development in TypeScript.",
   "type": "module",
   "engines": {
