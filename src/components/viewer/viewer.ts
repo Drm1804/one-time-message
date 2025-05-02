@@ -1,30 +1,44 @@
-import { Api, RawApi } from 'grammy';
 import { getMessage, removeMessage } from '../../utils/database.js';
 import { MessageStructure } from './types.js';
 import { logger } from '../../utils/logger.js';
-import { remover } from '../remover/remove.js';
+import { sendWithRemover } from '../remover/remove.js';
 import { getText } from '../../services/phrases/phrases.js';
 import { LanguageCode } from 'grammy/types';
+import { BotContext } from '../../services/bot/bot.js';
+import { lang } from '../../utils/utils.js';
 
 const log = logger('Reader Service');
 
+const REMOVE_TIMEOUT = 1000 * 60 * 5; // 5 minutes
+const REMOVE_TIMEOUT_HUMAN = 5; // 5 minutes
+
 export async function viewMessage(
   id: string,
-  api: Api<RawApi>,
+  ctx: BotContext,
   chatId: number,
-  lang = 'en',
 ): Promise<void> {
   log.info('readMessage');
-  const text = await getOneTimeMessageText(id, lang);
-  await removeMessage(id);
-  const { message_id } = await api.sendMessage(chatId, text);
+  const text = await getOneTimeMessageText(id, lang(ctx));
+  const mes = getText('otm_message', lang(ctx), [text, REMOVE_TIMEOUT_HUMAN]);
 
-  remover(chatId, message_id);
+  await removeMessage(id);
+
+  sendWithRemover(
+    {
+      ctx,
+      mes,
+      chatId,
+      timeout: REMOVE_TIMEOUT,
+    },
+    {
+      parse_mode: 'markdownV2',
+    },
+  );
 }
 
 async function getOneTimeMessageText(
   id: string,
-  lang: string,
+  lang: LanguageCode,
 ): Promise<string> {
   try {
     const message = await getMessage<MessageStructure>(id);
@@ -32,7 +46,7 @@ async function getOneTimeMessageText(
       throw new Error('Message is null or undefined');
     }
     return message.text;
-  } catch (error) {
-    return getText('message_not_found', lang as LanguageCode);
+  } catch {
+    return getText('message_not_found', lang);
   }
 }

@@ -30,5 +30,7 @@ export const es_store: LangStore = {
   message_impossible_remove:
     '⚠️ No se pudo eliminar el mensaje, tal vez enviaste un mensaje al bot en privado, o el bot no es administrador del grupo. Por favor, elimínalo manualmente.',
   otm_link_message: (link) =>
-    `🔗 Enlace al mensaje de una sola vez (haz clic para copiar): \n\n \`\`\` ${link} \`\`\``,
+    `🔗 Enlace al mensaje de una sola vez \\(haz clic para copiar\\): \n\n \`\`\` ${link} \`\`\``,
+  otm_message: (message, timeout) =>
+    `Enviaste un mensaje\\. Se eliminará automáticamente en ${timeout} minutos: \n\n \`\`\` ${message} \`\`\``,
 };

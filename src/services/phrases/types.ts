@@ -5,6 +5,7 @@ export type PhKeys =
   | 'participants_count_error'
   | 'message_not_found'
   | 'otm_link_message'
+  | 'otm_message'
   | 'message_rate_limit';
 type Func = (...args: Array<string | number>) => string;
 export type LangStore = Record<PhKeys, Func | string>;

@@ -59,11 +59,11 @@ export async function initBot(
     }
     if (args.length > 0) {
       log.info(`start command ${command} with args ${args}`);
+
       await viewMessage(
         args[0],
-        ctx.api,
+        ctx,
         ctx.message.chat.id,
-        ctx.me.language_code,
       );
     } else {
       log.info(`start command ${command} without args`);

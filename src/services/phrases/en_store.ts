@@ -30,5 +30,7 @@ export const en_store: LangStore = {
   message_impossible_remove:
     '⚠️ Failed to delete the message, perhaps you messaged the bot privately, or the bot is not an admin of the group. Please delete it manually.',
   otm_link_message: (link) =>
-    `🔗 Link to the one-time message (click to copy):  \n\n \`\`\` ${link} \`\`\``,
+    `🔗 Link to the one\\-time message \\(click to copy\\):  \n\n \`\`\` ${link} \`\`\``,
+  otm_message: (message, timeout) =>
+    `You sent a message\\. It will be automatically deleted in ${timeout} minutes: \n\n \`\`\` ${message} \`\`\``,
 };
