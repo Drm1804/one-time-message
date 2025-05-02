@@ -35,9 +35,12 @@ type SendWithRemover = {
   timeout?: number;
 };
 
-export const sendWithRemover = (params: SendWithRemover): void => {
+export const sendWithRemover = (
+  params: SendWithRemover,
+  tgParams?: Record<string, string>,
+): void => {
   const { ctx, mes, chatId, timeout } = params;
-  ctx.api.sendMessage(chatId, mes).then(({ message_id }) => {
+  ctx.api.sendMessage(chatId, mes, tgParams).then(({ message_id }) => {
     remover(chatId, message_id, timeout);
   });
 };

@@ -29,4 +29,6 @@ export const en_store: LangStore = {
     '⚠️ You are sending messages too frequently, please try again later.',
   message_impossible_remove:
     '⚠️ Failed to delete the message, perhaps you messaged the bot privately, or the bot is not an admin of the group. Please delete it manually.',
+  otm_link_message: (link) =>
+    `🔗 Link to the one-time message (click to copy):  \n\n \`\`\` ${link} \`\`\``,
 };

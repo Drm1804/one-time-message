@@ -27,5 +27,8 @@ export const es_store: LangStore = {
   message_not_found: '⚠️ Mensaje no encontrado, podría haber sido leído.',
   message_rate_limit:
     '⚠️ Estás enviando mensajes con demasiada frecuencia, por favor intenta nuevamente más tarde.',
-  message_impossible_remove: '⚠️ No se pudo eliminar el mensaje, tal vez enviaste un mensaje al bot en privado, o el bot no es administrador del grupo. Por favor, elimínalo manualmente.',
+  message_impossible_remove:
+    '⚠️ No se pudo eliminar el mensaje, tal vez enviaste un mensaje al bot en privado, o el bot no es administrador del grupo. Por favor, elimínalo manualmente.',
+  otm_link_message: (link) =>
+    `🔗 Enlace al mensaje de una sola vez (haz clic para copiar): \n\n \`\`\` ${link} \`\`\``,
 };

@@ -41,12 +41,17 @@ export const sender = async (ctx: BotContext): Promise<void> => {
   const otmId = nanoid();
 
   await setMessage(otmId, message);
-
-  sendWithRemover({
-    ctx,
-    mes: getOtLink(botUsername, otmId),
-    chatId,
-  });
+  const mes = getText('otm_link_message', lang(ctx), [getOtLink(botUsername, otmId)]);
+  sendWithRemover(
+    {
+      ctx,
+      mes,
+      chatId,
+    },
+    {
+      parse_mode: 'markdownV2',
+    },
+  );
 };
 
 const getOtLink = (botUsername: string, otmId: string): string =>
