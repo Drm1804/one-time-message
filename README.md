@@ -11,10 +11,8 @@ A bot designed for sending messages that can only be read once. After being read
 
 ## How to Use
 
-1. Add the bot to a group where you want to send messages.
-2. (Optional) Make the bot an administrator with permission to delete messages in the group for automatic cleanup.
-3. Send any text message to the bot.
-4. The bot will return a link, which you can share with the recipient. Once the recipient reads the message, it will be deleted.
+1. Send any text message to the bot.
+2. The bot will return a link, which you can share with the recipient. Once the recipient reads the message, it will be deleted.
 
 ## Limitations
 

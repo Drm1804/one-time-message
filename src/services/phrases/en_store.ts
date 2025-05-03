@@ -7,9 +7,8 @@ One-Time Message Bot!
 
 📩 How to send a message?
 
-1️⃣ Add the bot to the group where you will send messages. 📢 Make the bot an administrator with permission to delete messages in that group. (This is not mandatory, but when interacting with the bot in the group, it can automatically delete the original message) 🧹
-2️⃣ Send any text message to the bot 🖱️
-4️⃣ The bot will return a link 🔗, which you need to send to the recipient of your message. Once the recipient reads the message, it will be deleted. ✨
+1️⃣ Send any text message to the bot 🖱️
+2️⃣ The bot will return a link 🔗, which you need to send to the recipient of your message. Once the recipient reads the message, it will be deleted. ✨
 
 You can send media files using Telegram's built-in functions. 📸
 

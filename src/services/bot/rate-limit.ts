@@ -31,7 +31,7 @@ export async function rateLimitHandler(
   if (now - lastMessageTime < RATE_LIMIT_TIME) {
     const mes = getText('message_rate_limit', lang(ctx));
     const chatId = ctx.message.chat.id;
-    remover(ctx.message.chat.id, ctx.message.message_id);
+    remover(ctx.message.chat.id, ctx.message.message_id, lang(ctx));
     sendWithRemover({ ctx, mes, chatId });
     return;
   }

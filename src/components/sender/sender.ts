@@ -2,8 +2,7 @@ import { BotContext } from '../../services/bot/bot.js';
 import { getText } from '../../services/phrases/phrases.js';
 import { setMessage } from '../../utils/database.js';
 import { remover, sendWithRemover } from '../remover/remove.js';
-import { customAlphabet } from 'nanoid';
-import { lang } from '../../utils/utils.js';
+import { getUniqueId, lang } from '../../utils/utils.js';
 
 export const sender = async (ctx: BotContext): Promise<void> => {
   const chatId = ctx.chat?.id;
@@ -17,16 +16,21 @@ export const sender = async (ctx: BotContext): Promise<void> => {
   /**
    * Проверяем где с ботом общаются
    */
-  if (chatId > 0) {
-    const mes = getText('not_chat_warning', lang(ctx));
-    sendWithRemover({ ctx, mes, chatId });
-  }
+  //TODO временно закоментировал, поскольку бот удаляет свои сообщения из чата
+  // if (chatId > 0) {
+  //   const mes = getText('not_chat_warning', lang(ctx));
+  //   sendWithRemover({ ctx, mes, chatId });
+  // }
 
+  /**
+   * Если бот в группе, проверяем сколько в ней человек
+   * Если больше 2 то выходим, это не секурно
+   */
   if (chatId < 0) {
     const count = await ctx.api.getChatMemberCount(chatId);
     if (count > 2) {
       ctx.api.sendMessage(chatId, '').then(({ message_id }) => {
-        remover(chatId, message_id);
+        remover(chatId, message_id, lang(ctx));
       });
       const mes = getText('participants_count_error', lang(ctx));
       sendWithRemover({ ctx, mes, chatId });
@@ -35,13 +39,13 @@ export const sender = async (ctx: BotContext): Promise<void> => {
   }
 
   //удаляем исходное сообщение
-  remover(chatId, messageId, 1000 * 5);
+  remover(chatId, messageId, lang(ctx), 1000 * 5);
 
-  const nanoid = customAlphabet('1234567890abcdef', 10);
-  const otmId = nanoid();
-
+  const otmId = getUniqueId(12);
   await setMessage(otmId, message);
-  const mes = getText('otm_link_message', lang(ctx), [getOtLink(botUsername, otmId)]);
+  const mes = getText('otm_link_message', lang(ctx), [
+    getOtLink(botUsername, otmId),
+  ]);
   sendWithRemover(
     {
       ctx,

@@ -7,9 +7,8 @@ const welcome_message = `
 
 📩 ¿Cómo enviar un mensaje?
 
-1️⃣ Agrega el bot al grupo donde enviarás mensajes. 📢 Haz que el bot sea administrador con permiso para eliminar mensajes en ese grupo. (Esto no es obligatorio, pero al interactuar con el bot en el grupo, puede eliminar automáticamente el mensaje original) 🧹
-2️⃣ Envía cualquier mensaje de texto al bot 🖱️
-4️⃣ El bot te devolverá un enlace 🔗, que debes enviar al destinatario de tu mensaje. Una vez que el destinatario lea el mensaje, este será eliminado. ✨
+1️⃣ Envía cualquier mensaje de texto al bot 🖱️
+2️⃣ El bot te devolverá un enlace 🔗, que debes enviar al destinatario de tu mensaje. Una vez que el destinatario lea el mensaje, este será eliminado. ✨
 
 Puedes enviar archivos multimedia utilizando las funciones integradas de Telegram. 📸
 

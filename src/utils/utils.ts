@@ -1,5 +1,6 @@
 import { LanguageCode } from 'grammy/types';
 import { BotContext } from '../services/bot/bot.js';
+import { customAlphabet } from 'nanoid';
 
 export async function pause(val = 100): Promise<null> {
   return new Promise((resolve) => {
@@ -17,4 +18,9 @@ export function lang(ctx: BotContext): LanguageCode {
     return ctx.me.language_code as LanguageCode;
   }
   return 'en';
+}
+
+export function getUniqueId(length = 10): string {
+  const nanoid = customAlphabet('1234567890abcdef', length);
+  return nanoid();
 }
