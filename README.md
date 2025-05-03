@@ -14,12 +14,6 @@ A bot designed for sending messages that can only be read once. After being read
 1. Send any text message to the bot.
 2. The bot will return a link, which you can share with the recipient. Once the recipient reads the message, it will be deleted.
 
-## Limitations
-
-- Messages sent in private chats cannot be deleted by the bot.
-- The bot does not function in groups with more than two participants.
-- Sending sensitive data is at your own risk. For added security, consider splitting sensitive information into multiple messages.
-
 ## Support and Development
 
 If you have ideas for improving the project, feel free to fork the repository and submit a pull request.
