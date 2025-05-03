@@ -1,4 +1,5 @@
 FROM node:22-alpine3.21
+RUN apk --no-cache add curl
 RUN mkdir /bot
 WORKDIR /bot
 COPY package.json /bot
